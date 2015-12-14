@@ -8,6 +8,15 @@
 
 abstract class BaseController {
     private $title = "";
+    private $javascript = "";
+
+    public function setJSNamespace($javascript) {
+        $this->javascript = $javascript . "_namespace.js";
+    }
+
+    public function getJSNamespace() {
+        return $this->javascript;
+    }
 
     public function setTitle($title) {
         $this->title = $title;
@@ -15,5 +24,23 @@ abstract class BaseController {
 
     public function getTitle() {
         return $this->title;
+    }
+
+    public function getBaseUrl() {
+        $baseUrl = (isset($_SERVER['HTTPS'])
+            && $_SERVER['HTTPS']
+            && !in_array(strtolower($_SERVER['HTTPS']),array('off','no')))
+            ? 'https'
+            : 'http';
+        $baseUrl .= '://'.$_SERVER['HTTP_HOST'];
+
+        return $baseUrl;
+    }
+
+    abstract function render();
+
+    public function returnJsonResponse($array) {
+        header('Content-type:application/json');
+        echo json_encode($array);
     }
 }

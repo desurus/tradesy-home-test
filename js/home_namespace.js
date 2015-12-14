@@ -72,7 +72,7 @@ var TRADESYHOMETEST = TRADESYHOMETEST || {};
     );
 
     ReactDOM.render(
-        <ItemsList url="/json_response.json"/>,
+        <ItemsList url="/index.json"/>,
         document.getElementById('content')
     )
 
