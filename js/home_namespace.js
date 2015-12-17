@@ -3,7 +3,10 @@
  */
 var TRADESYHOMETEST = TRADESYHOMETEST || {};
 
-(function(o){
+TRADESYHOMETEST = function(){
+
+    var baseUrl = "http://172.16.234.132/";
+
     var Pagination = React.createClass({
         render: function() {
             return (
@@ -76,4 +79,4 @@ var TRADESYHOMETEST = TRADESYHOMETEST || {};
         document.getElementById('content')
     )
 
-})(TRADESYHOMETEST);
+}();

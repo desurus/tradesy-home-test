@@ -7,6 +7,7 @@
  */
 
 include_once(__DIR__ . '/BaseController.php');
+include_once(ROOT_DIR . '/models/HomeModel.php');
 
 class HomeController extends BaseController {
 
@@ -14,10 +15,13 @@ class HomeController extends BaseController {
     {
         $this->setTitle("Welcome to the Tradesy Home Test website!");
         $this->setJSNamespace("home");
-        require_once(__ROOT__ . '/templates/home.php');
+        require_once(ROOT_DIR . '/templates/home.php');
     }
 
     public function renderJson() {
+
+        $model = new HomeModel();
+
         $data = array(
             'pagination' => array(
                 'prev_page' => array(
@@ -29,48 +33,7 @@ class HomeController extends BaseController {
                     'page' => 2
                 )
             ),
-            'items' => array(
-                array(
-                    'id' => 1,
-                    'title' => 'Thumbnail label',
-                    'desc' => 'Discing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                    'price' => '$35.00',
-                    'image' => 'http://172.16.234.132/images/balmain-x-h-and-m-jacquard-stripe-sweater-9246103-0-1.jpg',
-                    'more_link' => '/item/1/'
-                ),
-                array(
-                    'id' => 2,
-                    'title' => 'Thumbnail label',
-                    'desc' => 'Discing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                    'price' => '$35.00',
-                    'image' => 'http://172.16.234.132/images/balmain-x-h-and-m-jacquard-stripe-sweater-9246103-0-1.jpg',
-                    'more_link' => '/item/1/'
-                ),
-                array(
-                    'id' => 3,
-                    'title' => 'Thumbnail label',
-                    'desc' => 'Discing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                    'price' => '$35.00',
-                    'image' => 'http://172.16.234.132/images/balmain-x-h-and-m-jacquard-stripe-sweater-9246103-0-1.jpg',
-                    'more_link' => '/item/1/'
-                ),
-                array(
-                    'id' => 4,
-                    'title' => 'Thumbnail label',
-                    'desc' => 'Discing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                    'price' => '$35.00',
-                    'image' => 'http://172.16.234.132/images/balmain-x-h-and-m-jacquard-stripe-sweater-9246103-0-1.jpg',
-                    'more_link' => '/item/1/'
-                ),
-                array(
-                    'id' => 5,
-                    'title' => 'Thumbnail label',
-                    'desc' => 'Discing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                    'price' => '$35.00',
-                    'image' => 'http://172.16.234.132/images/balmain-x-h-and-m-jacquard-stripe-sweater-9246103-0-1.jpg',
-                    'more_link' => '/item/1/'
-                )
-            )
+            'items' => $model->getAllItems()
         );
 
         $this->returnJsonResponse($data);

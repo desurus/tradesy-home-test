@@ -6,7 +6,7 @@
  * Time: 3:15 PM
  */
 
-require_once(__ROOT__. '/templates/header.php');
+require_once(ROOT_DIR. '/templates/header.php');
 
 ?>
 
@@ -21,5 +21,5 @@ require_once(__ROOT__. '/templates/header.php');
 </div>
 
 <?php
-require_once(__ROOT__ . '/templates/footer.php');
+require_once(ROOT_DIR . '/templates/footer.php');
 ?>

@@ -6,9 +6,9 @@
  * Time: 10:28 AM
  */
 
+define('ROOT_DIR', dirname(__FILE__));
 require_once(__DIR__ . '/glue.php');
 include_once(__DIR__ . '/controllers/HomeController.php');
-define('__ROOT__', dirname(__FILE__));
 
 $urls = array(
     '/' => 'home',
@@ -18,10 +18,13 @@ $urls = array(
 );
 
 class home {
-    function GET($matches) {
+    function GET($matches)
+    {
         $home = new HomeController($matches);
-        if ($matches[1] && $matches[1] == "json") {
-            $home->renderJson();
+        if (array_key_exists(1, $matches)) {
+            if ($matches[1] == "json") {
+                $home->renderJson();
+            }
         } else {
             $home->render();
         }
