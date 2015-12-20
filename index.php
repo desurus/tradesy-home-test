@@ -11,6 +11,7 @@ require_once(__DIR__ . '/glue.php');
 include_once(__DIR__ . '/controllers/HomeController.php');
 include_once(__DIR__ . '/controllers/AboutController.php');
 include_once(__DIR__ . '/controllers/NotFoundController.php');
+include_once(__DIR__ . '/controllers/ItemController.php');
 
 $urls = array(
     '/' => 'Home',
@@ -51,7 +52,8 @@ class About {
 
 class Item {
     function GET($matches) {
-        echo "Item number ".$matches[1];
+        $item = new ItemController($matches);
+        $item->render();
     }
 }
 

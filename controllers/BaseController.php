@@ -31,11 +31,11 @@ abstract class BaseController {
         return $this->title;
     }
 
-    public function getCurrentPageNumber() {
-        if (array_key_exists("page", $this->matches)) {
-            return $this->matches['page'];
+    public function getUrlFragment($key) {
+        if (array_key_exists($key, $this->matches)) {
+            return $this->matches[$key];
         } else {
-            return 1;
+            return false;
         }
     }
 

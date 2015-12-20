@@ -24,6 +24,14 @@ class HomeController extends BaseController {
         require_once(ROOT_DIR . '/templates/home.php');
     }
 
+    public function getCurrentPageNumber() {
+        if ($this->getUrlFragment("page")) {
+            return $this->getUrlFragment("page");
+        } else {
+            return 1;
+        }
+    }
+
     public function renderJson() {
 
         $this->offset = $this->limit*($this->getCurrentPageNumber() - 1);
