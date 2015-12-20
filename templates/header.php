@@ -35,19 +35,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php $this->getBaseUrl(); ?>">TRADESY HOME TEST</a>
+            <a class="navbar-brand" href="<?php echo $this->getBaseUrl(); ?>">TRADESY HOME TEST</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="<?php $this->getBaseUrl(); ?>">Home <span class="sr-only">(current)</span></a></li>
-                <li><a href="<?php $this->getBaseUrl(); ?>/about">About</a></li>
-                <li><a href="<?php $this->getBaseUrl(); ?>/contact-us">Contact Us</a></li>
+                <li class="active"><a href="<?php echo $this->getBaseUrl(); ?>">Home <span class="sr-only">(current)</span></a></li>
+                <li><a href="<?php echo $this->getBaseUrl(); ?>/about">About</a></li>
+                <li><a href="<?php echo $this->getBaseUrl(); ?>/contact-us">Contact Us</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">My Items</a></li>
-                <li><a href="#">Sign In</a></li>
+                <li><a href="<?php echo $this->getBaseUrl(); ?>/add">Add Item</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

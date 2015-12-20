@@ -9,6 +9,11 @@
 abstract class BaseController {
     private $title = "";
     private $javascript = "";
+    private $matches = null;
+
+    public function __construct($matches=array()) {
+        $this->matches = $matches;
+    }
 
     public function setJSNamespace($javascript) {
         $this->javascript = $javascript . "_namespace.js";
@@ -24,6 +29,14 @@ abstract class BaseController {
 
     public function getTitle() {
         return $this->title;
+    }
+
+    public function getCurrentPageNumber() {
+        if (array_key_exists("page", $this->matches)) {
+            return $this->matches['page'];
+        } else {
+            return 1;
+        }
     }
 
     public function getBaseUrl() {

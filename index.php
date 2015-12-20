@@ -9,15 +9,20 @@
 define('ROOT_DIR', dirname(__FILE__));
 require_once(__DIR__ . '/glue.php');
 include_once(__DIR__ . '/controllers/HomeController.php');
+include_once(__DIR__ . '/controllers/AboutController.php');
+include_once(__DIR__ . '/controllers/NotFoundController.php');
 
 $urls = array(
-    '/' => 'home',
-    '/index.(json)\?.+' => 'home',
-    '/index.(json)\?page=(?P<page>\d+)' => 'home',
-    '/about' => 'about'
+    '/' => 'Home',
+    '/index.(json)\?.+' => 'Home',
+    '/index.(json)\?page=(?P<page>\d+)&.+' => 'Home',
+    '/about' => 'About',
+    '/about.(json)\?.+' => 'About',
+    '/item/(?P<item_id>\d+)' => 'Item',
+    '/404' => 'NotFound'
 );
 
-class home {
+class Home {
     function GET($matches)
     {
         $home = new HomeController($matches);
@@ -31,14 +36,34 @@ class home {
     }
 }
 
-class about {
+class About {
+    function GET($matches) {
+        $about = new AboutController($matches);
+        if (array_key_exists(1, $matches)) {
+            if ($matches[1] == "json") {
+                $about->renderJson();
+            }
+        } else {
+            $about->render();
+        }
+    }
+}
+
+class Item {
+    function GET($matches) {
+        echo "Item number ".$matches[1];
+    }
+}
+
+class NotFound {
     function GET() {
-        echo("<p>This is about page</p>");
+        $not_found = new NotFoundController();
+        $not_found->render();
     }
 }
 
 try {
     glue::stick($urls);
 } catch (Exception $e) {
-    echo($e->getMessage());
+    header('Location: /404');
 }

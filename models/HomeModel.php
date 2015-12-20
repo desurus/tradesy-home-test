@@ -14,18 +14,22 @@ class HomeModel extends BaseModel {
         parent::__construct();
     }
 
-    public function getAllItems() {
+    public function getAllItems($limit, $offset) {
         $result = array();
-        foreach ($this->db->items() as $item) {
+        foreach ($this->db->items()->limit($limit, $offset) as $item) {
             $result[] = array(
                 'id' => $item["id"],
                 'title' => $item["title"],
                 'desc' => $item["desc"],
                 'price' => $item["price"],
-                'image' => "/images/" . $item["image"],
+                'image' => "/images/".$item["image"],
                 'more_link' => "/item/".$item["id"]
             );
         }
         return $result;
+    }
+
+    public function countAllItems() {
+        return $this->db->items()->count("*");
     }
 }
