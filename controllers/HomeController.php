@@ -42,7 +42,7 @@ class HomeController extends BaseController {
         $data = array(
             'pagination' => array(
                 'current_page' => $this->getCurrentPageNumber(),
-                'next_page' => (($model->countAllItems() - $this->offset*$this->getCurrentPageNumber() > 0) ? true : false)
+                'next_page' => (($model->countAllItems() - $this->limit*$this->getCurrentPageNumber() > 0) ? true : false)
             ),
             'items' => $model->getAllItems($this->limit, $this->offset)
         );

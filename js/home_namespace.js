@@ -83,7 +83,7 @@ TRADESYHOMETEST = function(){
     var HomePage = React.createClass({
         getInitialState: function() {
             var current_page = (!isNaN(window.location.hash.substr(1))) ? window.location.hash.substr(1) : 1;
-            return {data: {"pagination":{"current_page": current_page, "next_page": true},
+            return {data: {"pagination":{"current_page": current_page, "next_page": false},
                            "items": []}};
         },
         loadItemsFromServer: function(current_page) {

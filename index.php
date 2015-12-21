@@ -20,6 +20,7 @@ $urls = array(
     '/about' => 'About',
     '/about.(json)\?.+' => 'About',
     '/item/(?P<item_id>\d+)' => 'Item',
+    '/item/(?P<add_item>add)' => 'Item',
     '/404' => 'NotFound'
 );
 
@@ -54,6 +55,10 @@ class Item {
     function GET($matches) {
         $item = new ItemController($matches);
         $item->render();
+    }
+    function DELETE($matches) {
+        $item = new ItemController($matches);
+        $item->delete();
     }
 }
 

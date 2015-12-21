@@ -10,7 +10,7 @@ require_once(ROOT_DIR. '/templates/header.php');
 
 ?>
 
-<div class="container">
+<div class="container" id="item_page">
     <div class="page-header">
         <h1><?php echo $this->single_item["title"]; ?></h1>
     </div>
@@ -31,7 +31,7 @@ require_once(ROOT_DIR. '/templates/header.php');
                 <dd>$<?php echo $this->single_item['price']; ?></dd>
             </dl>
             <a class="btn btn-primary" href="#" role="button">Edit this item</a>
-            <a class="btn btn-danger" href="#" role="button">Delete this item</a>
+            <a class="btn btn-danger" href="#" id="delete_item" role="button">Delete this item</a>
         </div>
     </div>
 </div>
