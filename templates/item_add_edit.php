@@ -10,9 +10,7 @@ require_once(ROOT_DIR. '/templates/header.php');
 
 ?>
 
-    <div class="container" id="item_page">
-
-    </div>
+    <div class="container" id="item_page"></div>
 
 <?php
 require_once(ROOT_DIR . '/templates/footer.php');

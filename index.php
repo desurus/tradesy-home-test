@@ -60,6 +60,10 @@ class Item {
         $item = new ItemController($matches);
         $item->delete();
     }
+    function POST($matches) {
+        $item = new ItemController($matches);
+        $item->add();
+    }
 }
 
 class NotFound {
